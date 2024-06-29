@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { Box, Text, Spinner } from "@chakra-ui/react";
+import { Box, Text, Spinner, Image } from "@chakra-ui/react";
 
 const CharacterDetail = () => {
   const router = useRouter();
@@ -19,6 +19,8 @@ const CharacterDetail = () => {
     return <Spinner />;
   }
 
+  const characterImage = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+
   return (
     <Box position="relative" height="100vh" bg="gray.100">
       <Box
@@ -34,6 +36,15 @@ const CharacterDetail = () => {
         borderRadius="md"
         boxShadow="md"
       >
+        <Image
+          src={characterImage}
+          alt={character.name}
+          borderRadius="md"
+          mb={4}
+          objectFit="cover"
+          boxSize="200px"
+          mx="auto"
+        />
         <Text fontSize="2xl" fontWeight="bold">
           {character.name}
         </Text>
