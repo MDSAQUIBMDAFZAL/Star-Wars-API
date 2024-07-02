@@ -2,9 +2,9 @@ import { Box, Text, Button, Image } from "@chakra-ui/react";
 import NextLink from "next/link";
 import FavoriteButton from "./FavoriteButton";
 
-const CharacterCard = ({ character }) => {
-  const characterId = character.url.split("/").slice(-2, -1)[0];
-  const characterImage = `https://starwars-visualguide.com/assets/img/characters/${characterId}.jpg`;
+const FilmCard = ({ film }) => {
+  const filmId = film.url.split("/").slice(-2, -1)[0];
+  const filmImage = `https://starwars-visualguide.com/assets/img/films/${filmId}.jpg`;
 
   return (
     <Box
@@ -21,8 +21,8 @@ const CharacterCard = ({ character }) => {
       transition="background-color 0.3s ease-in-out"
     >
       <Image
-        src={characterImage}
-        alt={character.name}
+        src={filmImage}
+        alt={film.title}
         borderRadius="md"
         mb={4}
         objectFit="cover"
@@ -30,18 +30,18 @@ const CharacterCard = ({ character }) => {
         mx="auto"
       />
       <Text fontSize="xl" fontWeight="bold">
-        {character.name}
+        {film.title}
       </Text>
-      <Text>Height: {character.height}</Text>
-      <Text>Birth Year: {character.birth_year}</Text>
-      <NextLink href={`/characters/${characterId}`} passHref>
+      <Text>Director: {film.director}</Text>
+      <Text>Release Date: {film.release_date}</Text>
+      <NextLink href={`/film/${filmId}`} passHref>
         <Button as="a" mt={4} colorScheme="teal" borderRadius="30px">
           View Details
         </Button>
       </NextLink>
-      <FavoriteButton item={character} type="character" />
+      <FavoriteButton item={film} type="film" />
     </Box>
   );
 };
 
-export default CharacterCard;
+export default FilmCard;
